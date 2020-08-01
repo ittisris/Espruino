@@ -30,5 +30,6 @@ typedef enum{
  
 bool ESP32_Get_NVS_Status(esp_hardware_esp32_t hardware);
 void ESP32_Set_NVS_Status(esp_hardware_esp32_t hardware, bool enable);  
+int32_t ESP32_Get_Bootcount();
 
 #endif /* TARGETS_ES32_JSHARDWARE_ESP32_H_ */

@@ -171,3 +171,16 @@ void jswrap_ESP32_enableWifi(bool enable){ //may be later, we will support BLEen
   jsfRemoveCodeFromFlash();
   esp_restart();
 }
+/*JSON{
+  "type" : "staticmethod",
+  "ifdef" : "ESP32",
+  "class" : "ESP32",
+  "name" : "getBootcount",
+  "generate" : "jswrap_ESP32_getBootcount",
+  "return" : ["int32",""]
+}
+Get the number of boots from the deep sleep state.
+*/
+int jswrap_ESP32_getBootcount() {
+  return ESP32_Get_Bootcount();
+}

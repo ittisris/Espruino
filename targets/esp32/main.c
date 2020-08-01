@@ -30,6 +30,8 @@
 
 #include "jsvar.h"
 
+RTC_DATA_ATTR int32_t boot_count = 0; // Boot count
+
 extern void *espruino_stackHighPtr;  //Name spaced because this has to be a global variable.
                                      //Used in jsuGetFreeStack().
 
@@ -82,6 +84,9 @@ char* romdata_jscode=0;
  */
 int app_main(void)
 {
+    // Increment bootcount
+  boot_count++;
+  
   esp_log_level_set("*", ESP_LOG_ERROR); // set all components to ERROR level - suppress Wifi Info 
   esp_err_t err = nvs_flash_init();
     if (err == ESP_ERR_NVS_NO_FREE_PAGES || err == ESP_ERR_NVS_NEW_VERSION_FOUND) {

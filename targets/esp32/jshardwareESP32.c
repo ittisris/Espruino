@@ -19,7 +19,9 @@
 #include "esp_system.h"
 #include "nvs_flash.h"
 #include "nvs.h"
- 
+
+extern RTC_DATA_ATTR int32_t boot_count;
+
 static char *ESP32_hardwareName(esp_hardware_esp32_t hardware){
 	switch(hardware){
 		case ESP_NETWORK_BLE: return "bleStatus";
@@ -47,3 +49,7 @@ void ESP32_Set_NVS_Status(esp_hardware_esp32_t hardware, bool enable){
 	nvs_set_u32(hardwareHandle,ESP32_hardwareName(hardware),status);
 	nvs_close(hardwareHandle);
 }  
+
+int32_t ESP32_Get_Bootcount() {
+	return boot_count;
+}
